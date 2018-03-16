@@ -2,9 +2,10 @@ package entidade;
 
 import java.util.Date;
 
-public class Cliente {
+public class Funcionario {
     private Integer id;
     private String nome;
+    private String cargo;
     private String cpf;
     private String rg;
     private Date dataNascimento;
@@ -27,6 +28,14 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getCpf() {
@@ -76,6 +85,7 @@ public class Cliente {
     public void setCelular(String celular) {
         this.celular = celular;
     }
+    
     
     
 }
