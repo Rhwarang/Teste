@@ -13,7 +13,7 @@ public class Dao {
     
     public void abrirConexao() throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3307/rodoviaria", "root", "1234");
+        con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rodoviaria", "root", "1234");
     }
     
     public void fecharConexao(){

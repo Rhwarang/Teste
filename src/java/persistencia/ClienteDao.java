@@ -23,11 +23,65 @@ public class ClienteDao extends Dao{
         fecharConexao();
     }
     
-    public List<Cliente> listarTodosCliente() throws Exception{
+    public List<Cliente> listarCliente() throws Exception{
         abrirConexao();
         
         String sql = "SELECT * FROM cliente";
         stmt = con.prepareStatement(sql);
+        rs = stmt.executeQuery();
+        
+        List<Cliente> dados = new ArrayList<>();
+        
+        while(rs.next()){
+            Cliente c = new Cliente();
+            c.setId                 (rs.getInt("id"));
+            c.setNome               (rs.getString("nome"));
+            c.setCpf                (rs.getString("cpf"));
+            c.setRg                 (rs.getString("rg"));
+            c.setDataNascimento     (rs.getDate("dataNascimento"));
+            c.setEmail              (rs.getString("email"));
+            c.setTelefone           (rs.getString("telefone"));
+            c.setCelular            (rs.getString("celular"));
+            dados.add(c);
+        }
+        fecharConexao();
+        
+        return dados;
+    }
+    
+    public List<Cliente> listarClienteById(int id) throws Exception{
+        abrirConexao();
+        
+        String sql = "SELECT * FROM cliente WHERE id = ?";
+        stmt = con.prepareStatement(sql);
+        stmt.setInt(1, id);
+        rs = stmt.executeQuery();
+        
+        List<Cliente> dados = new ArrayList<>();
+        
+        while(rs.next()){
+            Cliente c = new Cliente();
+            c.setId                 (rs.getInt("id"));
+            c.setNome               (rs.getString("nome"));
+            c.setCpf                (rs.getString("cpf"));
+            c.setRg                 (rs.getString("rg"));
+            c.setDataNascimento     (rs.getDate("dataNascimento"));
+            c.setEmail              (rs.getString("email"));
+            c.setTelefone           (rs.getString("telefone"));
+            c.setCelular            (rs.getString("celular"));
+            dados.add(c);
+        }
+        fecharConexao();
+        
+        return dados;
+    }
+    
+    public List<Cliente> listarClienteByNome(String nome) throws Exception{
+        abrirConexao();
+        
+        String sql = "SELECT * FROM cliente WHERE nome LIKE ?%";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, nome);
         rs = stmt.executeQuery();
         
         List<Cliente> dados = new ArrayList<>();
