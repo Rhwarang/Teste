@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Dao {
-    private Connection con;
-    private PreparedStatement stmt;
-    private ResultSet rs;
+    protected Connection con;
+    protected PreparedStatement stmt;
+    protected ResultSet rs;
     
     
     public void abrirConexao() throws Exception{
